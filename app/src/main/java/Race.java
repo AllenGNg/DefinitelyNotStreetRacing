@@ -1,4 +1,3 @@
-#import User;
 
 public class Race{
 
@@ -11,7 +10,7 @@ public class Race{
     }
 
     public void startRace(){
-        
+
     }  
 
 
