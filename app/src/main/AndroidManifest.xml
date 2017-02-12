@@ -48,8 +48,12 @@
             android:value="AIzaSyBVqddfoOo0c9iYI9oV4NaDodYKjO3iEF4" />
 
         <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:name=".GPSActivity"
+            android:label="GPS">
+            <!--android:name=".MapsActivity"
+            android:label="@string/title_activity_maps">-->
+        </activity>
+
     </application>
 
 </manifest>

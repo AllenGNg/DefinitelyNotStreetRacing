@@ -75,7 +75,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
                     public void onClick(View v){
-                startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                //startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                startActivity(new Intent(LoginActivity.this, GPSActivity.class));
             }
         });
 

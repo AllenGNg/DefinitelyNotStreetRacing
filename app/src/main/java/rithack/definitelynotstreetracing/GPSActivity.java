@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,19 +21,21 @@ import com.google.android.gms.maps.model.LatLng;
  * Created by kodyfwee on 2/11/17.
  */
 
-public class GPSActivity extends Activity
+public class GPSActivity extends FragmentActivity
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     public Location mCurrentLocation;
 
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
+    private final static int MY_PERMISSION_FINE_LOCATION = 101;
 
 
     private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
     private long FASTEST_INTERVAL = 2000; /* 2 sec */
 
     public void onCreate(Bundle savedInstanceState) {
+        Log.d("dumb","git.broke : a classic novel");
         super.onCreate(savedInstanceState);
         // Create the location client to start receiving updates
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -45,6 +48,7 @@ public class GPSActivity extends Activity
         super.onStart();
         // Connect the client.
         mGoogleApiClient.connect();
+        Log.d("dumb","we are all super cool and fun ");
     }
 
     protected void onStop() {
@@ -60,16 +64,8 @@ public class GPSActivity extends Activity
 
     public void onConnected(Bundle dataBundle) {
         // Get last known recent location.
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+        Log.d("dumb","goodtime");
+        Log.d("dumb","i love everyone and everything");
         mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         // Note that this can be NULL if last location isn't already known.
         if (mCurrentLocation != null) {
@@ -98,28 +94,15 @@ public class GPSActivity extends Activity
                 .setInterval(UPDATE_INTERVAL)
                 .setFastestInterval(FASTEST_INTERVAL);
         // Request location updates
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
                 mLocationRequest, this);
     }
 
     public void onLocationChanged(Location location) {
         // New location has now been determined
-        String msg = "Updated Location: " +
-                Double.toString(location.getLatitude()) + "," +
-                Double.toString(location.getLongitude());
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        // You can now create a LatLng Object for use with maps
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        mCurrentLocation = location;
+        Log.d("DEBUG",mCurrentLocation.toString());
     }
 
     public Location getLocation(){
@@ -128,6 +111,7 @@ public class GPSActivity extends Activity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("DEBUG", "Not fun things");
 
     }
 }
