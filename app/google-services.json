@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "886194922614",
+    "firebase_url": "https://definitelynotstreetracin-8f97d.firebaseio.com",
+    "project_id": "definitelynotstreetracin-8f97d",
+    "storage_bucket": "definitelynotstreetracin-8f97d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886194922614:android:6290a5b852042a9e",
+        "android_client_info": {
+          "package_name": "rithack.definitelynotstreetracing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886194922614-10046qoqop4m54ap8t28bjjq5bqn6rec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rithack.definitelynotstreetracing",
+            "certificate_hash": "A10019D5753F893676DDCE48694FB5AA9A764794"
+          }
+        },
+        {
+          "client_id": "886194922614-r59n41jddpe7ka80928obnkqvd4s1m22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs5G1U105oKiko72TaUNfn_vxuO3Epu24"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886194922614-r59n41jddpe7ka80928obnkqvd4s1m22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
