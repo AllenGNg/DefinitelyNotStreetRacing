@@ -1,3 +1,4 @@
+package rithack.definitelynotstreetracing;
 
 public class LocationHandler{
 

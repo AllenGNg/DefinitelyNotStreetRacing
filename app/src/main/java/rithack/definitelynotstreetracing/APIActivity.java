@@ -1,3 +1,5 @@
+package rithack.definitelynotstreetracing;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -29,26 +31,30 @@ public class APIActivity extends FragmentActivity
     public boolean mRequestingLocationUpdates = true;
     public String lastUpdateTime;
 
+    public APIActivity(){
+        Bundle temp = new Bundle();
+        temp.putString("message", "this is a test");
+        onCreate(temp);
+        onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         // Create a GoogleApiClient instance
 
         // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        mGoogleApiClient = new GoogleApiClient.Builder(getApplicationContext())
+        // See https://g.co/AppIndexing/AndroidStudio for more information..
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
-                .addApi(AppIndex.API).build();
+                .build();
 
         // Now make a location request and set it up to handle high accuracy pinging
 
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1);
+        mLocationRequest.setInterval(1600);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
@@ -101,6 +107,9 @@ public class APIActivity extends FragmentActivity
         System.out.println(mCurrentLocation.toString());
     }
 
+    public Location getLocation(){
+        return mCurrentLocation;
+    }
     @Override
     public void onConnectionFailed(ConnectionResult result) {
         // Was not able to make it work 
